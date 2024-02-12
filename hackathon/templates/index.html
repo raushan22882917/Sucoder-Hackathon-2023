@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Platform</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            color: black;
+        }
+        
+        .jumbotron {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .question-card {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .card-footer {
+            background-color: transparent;
+        }
+        
+        #quiz-message {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            margin-top: 20px;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+        }
+        
+        #submit-quiz {
+            margin-top: 20px;
+        }
+        
+        .form-check-input {
+            width: 20px;
+            height: 20px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">WikiCoding Challenge Quiz</h1>
+            <p class="lead">Test your knowledge with our quiz!</p>
+
+            <div class="quiz-info">
+                <p id="question-count">Question 1 of {{ totalQuestions }}</p>
+                <p id="total-marks">Total Marks: {{ totalMarks }}</p>
+                <div><button aria-placeholder="start">9:00</button> to <button aria-placeholder="finish:">10:00</button>
+                </div>
+                <div id="timer">Time Remaining: <span id="countdown"></span></div>
+            </div>
+        </div>
+        <form action="{{ url_for('results') }}" method="post">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+            </div>
+
+            {% for question in questions %}
+            <div class="card question-card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ question.question }}</h5>
+                    {% for option in question.options %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="{{ question.id }}" id="{{ option }}" value="{{ option }}" required>
+                        <label class="form-check-label" for="{{ option }}">
+                            {{ option }}
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="card-footer text-muted text-right">
+                    <button type="button" class="btn btn-primary next-question">Next</button>
+                </div>
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+    </div>
+    <!-- Add this to your HTML body -->
+    <div id="quiz-message" class="alert alert-info" style="display: none;"></div>
+
+
+    <!-- Optional: Add a custom style sheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='custom-style.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var questionCards = $('.question-card');
+
+            // Hide all question cards except the first one
+            questionCards.slice(1).hide();
+
+            // Handle "Next" button click
+            $('.next-question').on('click', function() {
+                var currentCard = $(this).closest('.question-card');
+                var nextCard = currentCard.next('.question-card');
+
+                // Hide the current card and show the next one
+                currentCard.hide();
+                nextCard.show();
+            });
+        });
+    </script>
+    <script>
+        // Custom JavaScript for quiz timer
+        $(document).ready(function() {
+            var questionCards = $('.question-card');
+            var totalQuestions = questionCards.length;
+            var currentPage = 1;
+            var timeInSeconds = 20; // 5 minutes
+
+            // Function to update the question count
+            function updateQuestionCount() {
+                $('#question-count').text('Question ' + currentPage + ' of ' + totalQuestions);
+            }
+
+            // Function to update the timer
+            function updateTimer() {
+                var minutes = Math.floor(timeInSeconds / 60);
+                var seconds = timeInSeconds % 60;
+                $('#countdown').text(minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0'));
+
+                if (timeInSeconds === 0) {
+                    clearInterval(timerInterval);
+                    $('#submit-quiz').click(); // Automatically submit the quiz when the timer reaches 0
+                } else {
+                    timeInSeconds--;
+                }
+            }
+
+            // Function to show the next question
+            function showNextQuestion() {
+                if (currentPage < totalQuestions) {
+                    questionCards.eq(currentPage - 1).hide();
+                    currentPage++;
+                    questionCards.eq(currentPage - 1).show();
+                    updateQuestionCount();
+                } else {
+                    // Display a message after submitting the entire quiz
+                    $('#quiz-message').text('Thank you for completing the quiz! click and submit button your result direct send to your email after sometime by admin.');
+                    $('#quiz-message').show();
+                    $('#submit-quiz').hide();
+                }
+            }
+
+            // Hide all question cards except the first one
+            questionCards.slice(1).hide();
+
+            // Initialize question count and timer
+            updateQuestionCount();
+            updateTimer();
+
+            // Handle "Next" button click
+            $('.next-question').on('click', function() {
+                showNextQuestion();
+            });
+
+            // Timer interval to update the timer every second
+            var timerInterval = setInterval(updateTimer, 1000);
+        });
+    </script>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('submitForm').addEventListener('submit', function(event) {
+                // Prevent the form from submitting the traditional way
+                event.preventDefault();
+
+                // Simulate form submission (you can replace this with your actual form submission logic)
+                // For demonstration purposes, let's show the success message after a delay of 2 seconds
+                simulateFormSubmission();
+            });
+        });
+
+        function simulateFormSubmission() {
+            // Simulate form submission logic here
+            // For demonstration purposes, let's just show the success message after a delay
+            setTimeout(function() {
+                // Hide the form
+                document.getElementById('submitForm').style.display = 'none';
+
+                // Show the success message
+                document.getElementById('successMessage').style.display = 'block';
+            }, 2000); // 2-second delay (replace with your actual logic)
+        }
+    </script>
+</body>
+
+</html>

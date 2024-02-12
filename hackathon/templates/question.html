@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .bar1,
+        .bar2,
+        .bar3 {
+            width: 35px;
+            height: 5px;
+            background-color: white;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        .change .bar1 {
+            transform: translate(0, 11px) rotate(-45deg);
+        }
+
+        .change .bar2 {
+            opacity: 0;
+        }
+
+        .change .bar3 {
+            transform: translate(0, -11px) rotate(45deg);
+        }
+
+        /********************************************container*****************************************/
+        .heads {
+            width: 100%;
+            height: 50px;
+        }
+
+        .question_heading {
+            width: 100%;
+            height: 50px;
+            background-color: #252525;
+            display: flex;
+        }
+
+        .question_heading_button {
+            width: 100px;
+            color: white;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .question_heading_button:hover {
+            background-color: aqua;
+            height: 40px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .box {
+            width: 100%;
+            height: 100px;
+            background-color: black;
+            margin-top: 200px;
+
+        }
+
+        /**********************************************Question Box*****************************/
+        .question_box {
+            background-color:white;
+            margin-top: 10px;
+            width: 50%;
+            height: 500px;
+            cursor: pointer;
+            display: flex;
+
+        }
+
+        .inner_ques {
+            width: 95%;
+            height: auto;
+            margin-top: 5px;
+            margin-left: 20px;
+            margin-right: 10px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .inp {
+            background-color: #E7E9EB;
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+        }
+
+        .inner_inp {
+            justify-content: left;
+            align-items: left;
+            display: flex;
+        }
+
+        .out_inp {
+            justify-content: left;
+            align-items: left;
+            display: flex;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .content-box1 {
+            width: 50%;
+            height: 500px;
+            background-color: red;
+            /* Just for illustration */
+            margin-top: 10px;
+        }
+
+        .content-box2 {
+            width: 50%;
+            height: 500px;
+            background-color: white;
+            border: 2px solid black;
+            /* Just for illustration */
+            margin-top: 10px;
+            /* visibility:hidden; */
+        }
+
+        .content-box3 {
+            width: 50%;
+            height: 500px;
+            background-color: white;
+            /* Just for illustration */
+            margin-top: 10px;
+        }
+
+
+        /*****************************************comment box**************************************/
+        .comment-box {
+            width: 95%;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            width: 60%;
+            height: 50px;
+            margin-left: 20px;
+            border: 5px solid black;
+
+        }
+
+        .comments {
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+
+        .img {
+            width: 100%;
+            height: 40px;
+        }
+
+        .comment-option {
+            margin-right: 10px;
+            width: auto;
+            height: 50px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .text_box {
+            margin-left: 20px;
+
+        }
+
+        .submit_button {
+            background-color: green;
+            margin-left: 20px;
+            width: auto;
+            height: 50px;
+            border-radius: 20px;
+        }
+
+        .text_box {
+            width: 500px;
+            height: 200px;
+            border: 2px solid red;
+        }
+
+        /****************************************************************Solution*************************/
+        .solution_inner {
+            width: 100%;
+            height: 50px;
+            background-color: black;
+        }
+
+        .form-select {
+            /* display: flex; */
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0px;
+        }
+
+
+        /* .Preference{
+            width: 95%;
+            height: 300px;
+            margin-left: 20px;
+            margin-top: 10px;
+            border-radius: 10px;
+        } */
+
+        .Preference1 {
+            width: 95%;
+            height: 300px;
+            margin-left: 20px;
+            margin-top: 10px;
+            border-radius: 10px;
+            background-color: red;
+        }
+
+        .Preference2 {
+            width: 95%;
+            height: 300px;
+            margin-left: 20px;
+            margin-top: 10px;
+            border-radius: 10px;
+            background-color: blue;
+        }
+
+        .Preference3 {
+            width: 95%;
+            height: 300px;
+            margin-left: 20px;
+            margin-top: 10px;
+            border-radius: 10px;
+            background-color: green;
+        }
+
+        /* .text_edittor {
+            width: 50%;
+            height: 100%;
+            background-color: green;
+            margin-right: 10px;
+            margin-left: 50%;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+
+        } */
+
+        .text_edittor.shifted {
+            transform: translateX(1000px);
+            /* Adjust the value as needed */
+        }
+
+        .iframe-container {
+            flex: 2;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .texts {
+            margin-top: 0px;
+            margin-bottom: 90;
+        }
+
+        .additional_box {
+            /* width: 50%;
+            margin-left: 50%;
+            padding: 20px; */
+            /* Take up half of the available width */
+            flex: 1;
+            display: flex;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+            align-self: flex-start;
+            height: 500px;
+            margin-top: 10px;
+        }
+
+        .set{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="heads" style="background-color: red;"></div>
+    <div class="question_heading">
+        <div class="container" onclick="myFunction(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+
+        <div class="report" style="display: flex;">
+            <a class="question_heading_button" id="problemButton">Problem</a>
+            <a class="question_heading_button" id="submissionButton">Submission</a>
+            <a class="question_heading_button" id="solutionButton">Solution</a>
+            <a class="question_heading_button" id="commentButton">Comment</a>
+        </div>
+    </div>
+
+
+    <div class="text_edittor">
+
+    </div>
+
+    <div class="set" style="background-color: black;">
+        <div class="question_box" id="problemBox">
+            <div class="inner_ques">
+                <p>
+                    <span>
+                        Write a Python program that takes the marks of five subjects as input and calculates the average of
+                        those marks.
+                        Based on the average, determine the grade according to the following criteria:
+                    </span>
+                </p>
+                <pre class="inp">
+                    <span style="font-size: 20px;">
+                        <strong class="inner_inp">Input:85 92 75</strong>
+                        <strong class="out_inp">Output: Average: 72.2 Grade: C </strong></strong>
+                    </span>
+                </pre>
+            </div>
+        </div>
+    
+    
+        <div class="additional_box">
+            <div class="iframe-container">
+                <iframe src="{{url_for('compiler_data')}}" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="content-box1 hidden" id="submissionBox">
+        <!-- Submission content here -->
+    </div>
+
+    <div class="content-box2 hidden" id="solutionBox">
+        <select class="form-select" id="inlineFormSelectPref">
+            <option selected>Choose...</option>
+            <option id="javaButton" value="Java">Java</option>
+            <option id="cButton" value="Cpp">Cpp</option>
+            <option id="pythonButton" value="Python">Python</option>
+        </select>
+
+        <div class="Preference" id="chooseBox"></div>
+        <div class="Preference1" id="pythonBox"></div>
+        <div class="Preference2" id="javaBox"></div>
+        <div class="Preference3" id="cBox"></div>
+    </div>
+
+
+    <!-- /***********************************************comment paet*****************************/ -->
+    <div class="content-box3 hidden" id="commentBox">
+        <div class="comment-box" style="background-color:white;">
+            <div class="comment-header" style="background-color:white">
+                <button><img class="img" src="image.png" alt=""></button>
+                <button style="margin-left: 10px;"><img class="img" src="link.png" alt=""></button>
+                <button style="margin-left: 10px;" id="boldBtn"><img class="img" src="bold.png" alt=""></button>
+                <button style="margin-left: 10px;" id="italicBtn"><img class="img" src="italic.png" alt=""></button>
+                <button style="margin-left: 10px;"><img class="img" src="grid.png" alt=""></button>
+                <button style="margin-left: 10px;" aria-label="Bullet list" title="Bullet list" type="button"
+                    tabindex="-1" class="btn" aria-disabled="false" aria-pressed="false">
+                    <span class="icon-wrap">
+                        <svg width="40px" height="40px" focusable="false">
+                            <path
+                                d="M11 5h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 010-2zm0 6h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 010-2zm0 6h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 010-2zM4.5 6c0-.4.1-.8.4-1 .3-.4.7-.5 1.1-.5.4 0 .8.1 1 .4.4.3.5.7.5 1.1 0 .4-.1.8-.4 1-.3.4-.7.5-1.1.5-.4 0-.8-.1-1-.4-.4-.3-.5-.7-.5-1.1zm0 6c0-.4.1-.8.4-1 .3-.4.7-.5 1.1-.5.4 0 .8.1 1 .4.4.3.5.7.5 1.1 0 .4-.1.8-.4 1-.3.4-.7.5-1.1.5-.4 0-.8-.1-1-.4-.4-.3-.5-.7-.5-1.1zm0 6c0-.4.1-.8.4-1 .3-.4.7-.5 1.1-.5.4 0 .8.1 1 .4.4.3.5.7.5 1.1 0 .4-.1.8-.4 1-.3.4-.7.5-1.1.5-.4 0-.8-.1-1-.4-.4-.3-.5-.7-.5-1.1z"
+                                fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                </button>
+                <button style="margin-left: 10px;" aria-label="Numbered list" title="Numbered list" type="button"
+                    tabindex="-1" class="tox-tbtn" aria-disabled="false" aria-pressed="false"><span
+                        class="tox-icon tox-tbtn__icon-wrap"><svg width="40px" height="40px" focusable="false">
+                            <path
+                                d="M10 17h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 010-2zm0-6h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 010-2zm0-6h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 110-2zM6 4v3.5c0 .3-.2.5-.5.5a.5.5 0 01-.5-.5V5h-.5a.5.5 0 010-1H6zm-1 8.8l.2.2h1.3c.3 0 .5.2.5.5s-.2.5-.5.5H4.9a1 1 0 01-.9-1V13c0-.4.3-.8.6-1l1.2-.4.2-.3a.2.2 0 00-.2-.2H4.5a.5.5 0 01-.5-.5c0-.3.2-.5.5-.5h1.6c.5 0 .9.4.9 1v.1c0 .4-.3.8-.6 1l-1.2.4-.2.3zM7 17v2c0 .6-.4 1-1 1H4.5a.5.5 0 010-1h1.2c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3H4.4a.4.4 0 110-.8h1.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3H4.5a.5.5 0 110-1H6c.6 0 1 .4 1 1z"
+                                fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+            <div rows="4" cols="50" placeholder="Leave a comment" id="textArea" contenteditable="true" class="text_box">
+                Type your text here...</div>
+
+            <!-- <textarea id="textArea" contenteditable="true" rows="4" cols="50" placeholder="Leave a comment"
+                class="text_box"></textarea> -->
+            <button class="submit_button" id="commentButton">Submit Comment</button>
+            <div class="comments" id="commentList"></div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+</body>
+
+<script>
+    function myFunction(x) {
+        x.classList.toggle("change");
+    }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const problemButton = document.getElementById("problemButton");
+        const submissionButton = document.getElementById("submissionButton");
+        const solutionButton = document.getElementById("solutionButton");
+        const commentButton = document.getElementById("commentButton");
+
+        const problemBox = document.getElementById("problemBox");
+        const submissionBox = document.getElementById("submissionBox");
+        const solutionBox = document.getElementById("solutionBox");
+        const commentBox = document.getElementById("commentBox");
+
+
+        problemButton.addEventListener("click", function () {
+            problemBox.classList.toggle("hidden");
+            submissionBox.classList.add("hidden");
+            solutionBox.classList.add("hidden");
+            commentBox.classList.add("hidden");
+        });
+
+        submissionButton.addEventListener("click", function () {
+            problemBox.classList.add("hidden");
+            submissionBox.classList.toggle("hidden");
+            solutionBox.classList.add("hidden");
+            commentBox.classList.add("hidden");
+        });
+
+        solutionButton.addEventListener("click", function () {
+            problemBox.classList.add("hidden");
+            submissionBox.classList.add("hidden");
+            solutionBox.classList.toggle("hidden");
+            commentBox.classList.add("hidden");
+        });
+
+        commentButton.addEventListener("click", function () {
+            problemBox.classList.add("hidden");
+            submissionBox.classList.add("hidden");
+            solutionBox.classList.add("hidden");
+            commentBox.classList.toggle("hidden");
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const commentInput = document.getElementById("commentInput");
+        const commentButton = document.getElementById("commentButton");
+        const commentList = document.getElementById("commentList");
+        const boldButton = document.getElementById("boldButton");
+        const italicButton = document.getElementById("italicButton");
+        const gridButton = document.getElementById("gridButton");
+
+        commentButton.addEventListener("click", function () {
+            const commentText = commentInput.value.trim();
+
+            if (commentText !== "") {
+                const commentElement = document.createElement("p");
+                commentElement.innerHTML = commentText;
+                commentList.appendChild(commentElement);
+                commentInput.value = "";
+            }
+        });
+
+        boldButton.addEventListener("click", function () {
+            commentInput.value += "<strong>Bold text</strong>";
+        });
+
+        italicButton.addEventListener("click", function () {
+            commentInput.value += "<em>Italic text</em>";
+        });
+
+        gridButton.addEventListener("click", function () {
+            commentInput.value += "<div class='grid'><div>Cell 1</div><div>Cell 2</div></div>";
+        });
+    });
+</script>
+
+<script>
+    const boldBtn = document.getElementById('boldBtn');
+    const italicBtn = document.getElementById('italicBtn');
+    const textArea = document.getElementById('textArea');
+
+    boldBtn.addEventListener('click', () => {
+        document.execCommand('bold', false, null);
+    });
+
+    italicBtn.addEventListener('click', () => {
+        document.execCommand('italic', false, null);
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const pythonButton = document.getElementById("pythonButton");
+        const cButton = document.getElementById("cButton");
+        const javaButton = document.getElementById("javaButton");
+        const chooseButton = document.getElementById("chooseButton");
+
+
+        const pythonBox = document.getElementById("pythonBox");
+        const cBox = document.getElementById("cBox");
+        const javaBox = document.getElementById("javaBox");
+        const chooseBox = document.getElementById("chooseBox");
+
+
+
+
+        // chooseButton.addEventListener("click", function () {
+        //     pythonBox.classList.remove("hidden");
+        //     cBox.classList.remove("hidden");
+        //     javaBox.classList.remove("hidden");
+        //     chooseBox.classList.remove("hidden");
+
+        // });
+
+        javaButton.addEventListener("click", function () {
+            pythonBox.classList.add("hidden");
+            cBox.classList.add("hidden");
+            javaBox.classList.toggle("hidden");
+
+
+        });
+
+
+        pythonButton.addEventListener("click", function () {
+            pythonBox.classList.toggle("hidden");
+            cBox.classList.add("hidden");
+            javaBox.classList.add("hidden");
+
+
+
+        });
+
+        cButton.addEventListener("click", function () {
+            pythonBox.classList.add("hidden");
+            cBox.classList.toggle("hidden");
+            javaBox.classList.add("hidden");
+
+
+        });
+
+
+    });
+</script>
+
+</html>

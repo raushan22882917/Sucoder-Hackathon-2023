@@ -1,0 +1,63 @@
+[
+    {
+        "id": 1,
+        "question": "What is the purpose of the 'if __name__ == '__main__':' statement in Python?",
+        "options": ["To check if a module is being run as the main program", "To define a function", "To handle exceptions", "To create a class"],
+        "answer": "To check if a module is being run as the main program"
+    },
+    {
+        "id": 2,
+        "question": "What is the difference between 'append()' and 'extend()' methods in Python lists?",
+        "options": ["'append()' adds an element to the end of the list, while 'extend()' adds elements from an iterable", "'extend()' adds an element to the end of the list, while 'append()' adds elements from an iterable", "'append()' is used for dictionaries, while 'extend()' is used for lists", "'extend()' is used for dictionaries, while 'append()' is used for lists"],
+        "answer": "'append()' adds an element to the end of the list, while 'extend()' adds elements from an iterable"
+    },
+    {
+        "id": 3,
+        "question": "What is the purpose of the 'zip()' function in Python?",
+        "options": ["To combine two lists into a dictionary", "To iterate over multiple sequences in parallel", "To reverse the order of elements in a list", "To remove duplicates from a list"],
+        "answer": "To iterate over multiple sequences in parallel"
+    },
+    {
+        "id": 4,
+        "question": "How do you open a file in binary mode in Python?",
+        "options": ["file = open('filename', 'rb')", "file = open('filename', 'r')", "file = open('filename', 'wb')", "file = open('filename', 'br')"],
+        "answer": "file = open('filename', 'rb')"
+    },
+    {
+        "id": 5,
+        "question": "What is the purpose of the 'try', 'except', and 'finally' blocks in Python?",
+        "options": ["To define a function", "To handle exceptions and cleanup code", "To loop through a sequence", "To create a class"],
+        "answer": "To handle exceptions and cleanup code"
+    },
+    {
+        "id": 6,
+        "question": "What is the purpose of the 'super()' function in Python?",
+        "options": ["To convert a string to uppercase", "To call a method from the parent class", "To find the maximum value in a list", "To concatenate two strings"],
+        "answer": "To call a method from the parent class"
+    },
+    {
+        "id": 7,
+        "question": "What is the difference between 'deep copy' and 'shallow copy' in Python?",
+        "options": ["'Deep copy' creates a new object with a new memory address, while 'shallow copy' creates a new object with the same memory address", "'Shallow copy' creates a new object with a new memory address, while 'deep copy' creates a new object with the same memory address", "'Deep copy' creates a new object with the same memory address, while 'shallow copy' creates a new object with a new memory address", "'Shallow copy' creates a new object with the same memory address, while 'deep copy' creates a new object with the same memory address"],
+        "answer": "'Deep copy' creates a new object with the same memory address, while 'shallow copy' creates a new object with a new memory address"
+    },
+    {
+        "id": 8,
+        "question": "What is the purpose of the 'map()' function in Python?",
+        "options": ["To apply a function to every item in an iterable", "To filter elements in an iterable", "To concatenate two lists", "To reverse the order of elements in a list"],
+        "answer": "To apply a function to every item in an iterable"
+    },
+    {
+        "id": 9,
+        "question": "What is the meaning of the '@staticmethod' decorator in Python?",
+        "options": ["To define a class method", "To define a static method that doesn't access or modify the class state", "To create an instance method", "To define a class variable"],
+        "answer": "To define a static method that doesn't access or modify the class state"
+    },
+    {
+        "id": 10,
+        "question": "How do you check if a key exists in a dictionary in Python?",
+        "options": ["'key' in dictionary", "'value' in dictionary", "dictionary.contains('key')", "dictionary.has_key('key')"],
+        "answer": "'key' in dictionary"
+    }
+]
+

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>About Us</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    .feature {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .feature i {
+      font-size: 48px;
+      color: #336699;
+    }
+
+    .feature p {
+      margin-top: 15px;
+    }
+
+    .team-member {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .team-member img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 20px;
+    }
+
+    h2,
+    p {
+      margin-bottom: 10px;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+
+
+    h2,
+    h3 {
+      color: #00796b;
+    }
+
+    p,
+    ul {
+      color: #555;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    .feature-card {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    /* Social media icons */
+    .social-icons {
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">About Our Coding Platform</h1>
+
+    <div class="row">
+      <div class="col-md-4 feature">
+        <i class="fas fa-laptop-code"></i>
+        <h3>Learn Coding</h3>
+        <p>Begin your coding journey with our vast range of courses and resources.</p>
+      </div>
+      <div class="col-md-4 feature">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <h3>Expert Mentors</h3>
+        <p>Get guidance and mentorship from industry professionals and experienced developers.</p>
+      </div>
+      <div class="col-md-4 feature">
+        <i class="fas fa-rocket"></i>
+        <h3>Projects & Challenges</h3>
+        <p>Engage in real-world projects and coding challenges to enhance your skills.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <h2 class="text-center my-4">Meet Our Team</h2>
+
+    <div class="row">
+      <div class="col-md-4 team-member">
+        <img src="{{ url_for('static', filename='assets/images/lead.jpeg') }}" alt="Team Member 1">
+        <h4>John Doe</h4>
+        <p>Lead Developer</p>
+      </div>
+      <div class="col-md-4 team-member">
+        <img src="{{ url_for('static', filename='assets/images/ui.jpeg') }}" alt="Team Member 1">
+
+        <h4>Jane Smith</h4>
+        <p>UI/UX Designer</p>
+      </div>
+      <div class="col-md-4 team-member">
+        <img src="{{ url_for('static', filename='assets/images/project.jpeg') }}" alt="Team Member 1">
+        <h4>David Johnson</h4>
+        <p>Project Manager</p>
+      </div>
+    </div>
+  </div>
+
+
+
+  <h1>About Wikicoding</h1>
+
+  <h2>Mission Statement</h2>
+  <p>At Wikicoding, we are on a mission to empower and connect developers around the globe. Our platform is built with
+    the belief that coding is a collaborative and ever-evolving journey, and we aim to provide the tools and
+    resources needed for developers to thrive in their coding endeavors.</p>
+
+  <h2>What is Wikicoding?</h2>
+  <p>Wikicoding is an innovative coding platform designed to foster collaboration, learning, and creativity within the
+    developer community. Whether you are a seasoned professional or just starting your coding journey, Wikicoding is
+    your go-to destination for:</p>
+
+  <ul>
+    <li><i class="fas fa-code"></i> <strong>Collaborative Coding:</strong> Work on projects with fellow developers in
+      real-time, harnessing the power of collective knowledge.</li>
+    <li><i class="fas fa-book"></i> <strong>Learning Resources:</strong> Access a vast repository of tutorials,
+      articles, and documentation to enhance your coding skills.</li>
+    <li><i class="fas fa-users"></i> <strong>Community Engagement:</strong> Connect with like-minded individuals, ask
+      questions, share insights, and build a network of collaborators.</li>
+  </ul>
+  <h2>Key Features</h2>
+
+  <div style="display: flex;">
+
+    <div class="feature-card">
+      <h3><i class="fas fa-sync"></i>Real-time Collaboration</h3>
+      <ul>
+        <li>Code together with your peers in a collaborative coding environment.</li>
+        <li>Instantly see changes and updates made by team members.</li>
+      </ul>
+    </div>
+
+    <div class="feature-card">
+      <h3><i class="fas fa-book-open"></i>Rich Learning Resources</h3>
+      <ul>
+        <li>Explore a comprehensive library of tutorials, articles, and documentation.</li>
+        <li>Learn from experts and contribute your knowledge to the community.</li>
+      </ul>
+    </div>
+
+    <div class="feature-card">
+      <h3><i class="fas fa-comments"></i> Community Hub</h3>
+      <ul>
+        <li>Engage with a vibrant community of developers.</li>
+        <li>Ask questions, share insights, and collaborate on projects.</li>
+      </ul>
+    </div>
+
+    <div class="feature-card">
+      <h3><i class="fas fa-tasks"></i>Project Management</h3>
+      <ul>
+        <li>Easily manage and organize your coding projects.</li>
+        <li>Track progress, set milestones, and collaborate efficiently.</li>
+      </ul>
+    </div>
+  </div>
+  <h2>Our Vision</h2>
+  <p>Wikicoding envisions a world where coding is accessible to all, regardless of skill level or background. We
+    believe that by fostering a collaborative and inclusive coding community, we can accelerate innovation and
+    empower individuals to make a positive impact through technology.</p>
+
+  <footer>
+    <h2>Join Us in Shaping the Future of Coding</h2>
+    <p style=" color: white;">Whether you're here to learn, collaborate, or contribute, Wikicoding welcomes you to join our community.
+      Together, let's shape the future of coding and create a space where knowledge knows no bounds.</p>
+    <div class="social-icons">
+      <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="#" target="_blank"> <i class="fab fa-linkedin"></i></a>
+      <a href="#" target="_blank"> <i class="fab fa-instagram"></i></a>
+
+    </div>
+    <p style=" color: white;">&copy; 2023 Wikicoding. All rights reserved.</p>
+  </footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

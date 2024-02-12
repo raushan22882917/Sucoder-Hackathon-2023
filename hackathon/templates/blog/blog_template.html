@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* styles.css */
+
+        body {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .card {
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .modal-body {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        #searchInput {
+            border: 1px solid #ced4da;
+            /* Bootstrap default border color */
+            border-radius: 5px;
+        }
+
+        /* Add more custom styles as needed */
+    </style>
+    <title>Awesome Blog</title>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="bg-dark text-white text-center py-3">
+        <h1>WiKiCoding Blog</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Write Blog</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Content -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search by topic">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" onclick="searchBlogs()">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="blogCards">
+            <!-- Cards will be added dynamically here -->
+        </div>
+    </div>
+
+    <!-- Modal for displaying blog content -->
+    <div class="modal fade" id="blogModal" tabindex="-1" role="dialog" aria-labelledby="blogModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="blogModalLabel">Blog Title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="blogContent">
+                    <!-- Blog content will be added dynamically here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3" style="margin-top:100px;">
+        <p>&copy; 2023 WiKiCoding Blog</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Dummy data for blog cards
+        const blogs = [
+            { 'title': 'Blog 1', 'content': 'Content of Blog 1', 'image': '/static/assets/images/ai1.jpg' },
+            { 'title': 'Blog 2', 'content': 'Content of Blog 2', 'image': '/static/assets/images/ai2.jpg' },
+            { 'title': 'Blog 3', 'content': 'Content of Blog 3', 'image': '/static/assets/images/ai3.jpg' },
+        ];
+
+        // Function to dynamically create blog cards
+        function createBlogCards() {
+            const blogCardsContainer = document.getElementById('blogCards');
+            blogCardsContainer.innerHTML = '';
+
+            blogs.forEach((blog, index) => {
+                const cardHtml = `
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="${blog.image}" class="card-img-top" alt="Blog Image">
+          <div class="card-body">
+            <h5 class="card-title">${blog.title}</h5>
+            <button class="btn btn-primary" onclick="openBlogModal(${index})">Read</button>
+          </div>
+        </div>
+      </div>
+    `;
+                blogCardsContainer.innerHTML += cardHtml;
+            });
+        }
+
+        // Function to open the blog modal
+        function openBlogModal(index) {
+            const blog = blogs[index];
+            const modalTitle = document.getElementById('blogModalLabel');
+            const modalContent = document.getElementById('blogContent');
+
+            modalTitle.innerText = blog.title;
+            modalContent.innerText = blog.content;
+
+            $('#blogModal').modal('show');
+        }
+
+        // Function to search blogs based on the input
+        // ...
+
+        // Function to search blogs based on the input
+        function searchBlogs() {
+            const searchInput = document.getElementById('searchInput').value;
+            const filteredBlogs = blogs.filter(blog => blog.title.includes(searchInput));
+
+            const searchInputBox = document.getElementById('searchInput');
+            if (filteredBlogs.length === 0 && searchInput !== '') {
+                searchInputBox.style.border = '1px solid red';
+            } else {
+                searchInputBox.style.border = ''; // Reset border color
+            }
+
+            blogs.length > 0 ? createBlogCards(filteredBlogs) : createBlogCards();
+        }
+
+        // ...
+
+        // Initial load of blog cards
+        createBlogCards();
+
+
+        // ...
+
+        // Function to show home content and hide about content
+        function showHome() {
+            document.getElementById('homeContent').classList.remove('d-none');
+            document.getElementById('aboutContent').classList.add('d-none');
+        }
+
+        // Function to show about content and hide home content
+        function showAbout() {
+            document.getElementById('homeContent').classList.add('d-none');
+            document.getElementById('aboutContent').classList.remove('d-none');
+        }
+
+        // ...
+    </script>
+
+
+</body>
+
+</html>

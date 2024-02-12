@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,
+        h1,
+        p {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+
+        }
+
+        .cookie-banner-wrapper {
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #2ed967;
+            padding: 10px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .cookie-d-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cookie-message {
+            max-width: 70%;
+            color: #333;
+        }
+
+        .cookie-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .cookie-btn-wrapper {
+            margin-left: 10px;
+        }
+
+        .cookie-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        .cookie-btn:hover {
+            background-color: #0056b3;
+        }
+
+
+        /* Reset some default styles */
+
+        /* Style the header */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        /* Style the header container */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Style the left section of the header */
+        .header .left {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Style the logo */
+        .header .left img {
+            width: 50px;
+            /* Adjust the size as needed */
+            height: 50px;
+            /* Adjust the size as needed */
+            margin-right: 10px;
+        }
+
+        /* Style the title */
+        .header .left h1 {
+            font-size: 1.5em;
+        }
+
+        /* Style the right section of the header */
+        .header .right {
+            margin-left: auto;
+        }
+
+        /* Style the navigation links */
+        .static-nav {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .static-link {
+            text-decoration: none;
+            color: #fff;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .static-link:hover {
+            text-decoration: underline;
+        }
+
+
+        .container {
+            width: 100%;
+            height: 300px;
+            margin: 0 auto;
+            background-image: url("{{ url_for('static', filename='assets/images/back.png') }}");
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            width: 800px;
+        }
+
+        .row>div {
+            flex: 1;
+        }
+
+        .row h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .row div:last-child {
+            text-align: right;
+        }
+
+        .row a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .row a:hover {
+            text-decoration: underline;
+        }
+
+        .button {
+            width: 150px;
+            height: 40px;
+            background-color: #007bff;
+            border-radius: 10px;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        /* Optional: Add some styling for links */
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .about {
+
+            width: 100%;
+            height: 300px;
+            background-color: white;
+            color: black;
+        }
+
+
+        .prize-container {
+            text-align: center;
+        }
+
+        .prize {
+            display: inline-block;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .prize img {
+            display: block;
+            max-width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .first-place {
+            animation: slideIn 0.5s ease-out 0.5s forwards;
+        }
+
+        .second-place {
+            animation: slideIn 0.5s ease-out 1s forwards;
+        }
+
+        .third-place {
+            animation: slideIn 0.5s ease-out 1.5s forwards;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        .rules-container {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            margin-top: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .cta-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            margin-top: 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+
+
+        .signup-container {
+            text-align: center;
+        }
+
+        .h1 {
+            color: white;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+
+
+        }
+        .h2{
+            height: 40px;
+            color: white;
+            background-color: #007bff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cookie-banner-wrapper navigation-banner">
+        <div class="cookie-d-flex">
+            <div class="cookie-message msL">We use cookies to ensure you have the best browsing experience on our
+                website. Please read our <a href="/privacy#cookies" target="_blank" class="cookie-link">cookie
+                    policy</a> for more information about how we use cookies.</div>
+            <div class="cookie-btn-wrapper">
+                <button class="ui-btn-secondary cookie-btn">
+                    <span class="ui-text">Ok</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <header>
+        <div class="header">
+            <div class="left" style="display: flex;">
+                <div>
+                    <img src="{{ url_for('static', filename='assets/images/logo.jpg') }}" alt="Logo">
+                </div>
+                Wikicoding
+                <!-- <div>
+                    <h1 class="h1">Wikicoding</h1>
+                </div> -->
+            </div>
+            <div class="right">
+                <span class="static-nav static-links mjR">
+                    <a class="static-link" href="#info">About</a>
+                    <a class="static-link" href="#prizes">Prizes</a>
+                    <a class="static-link mjR" href="#rules">Rules</a>
+                    <a class="static-link mjR" href="#rules">Scoring</a>
+                </span>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="container">
+        <div class="row">
+            <div style="margin: 100px;">
+                <h1>Daily Challenge</h1>
+            </div>
+            <div>
+                <h1>start date:16 Nov 2023</h1>
+                <a href=""><button class="button">go to contest</button></a>
+            </div>
+        </div>
+    </div>
+    <div class="about">
+        <h1>About</h1>
+        <div>
+            <p>
+                A daily coding contest is an online programming competition that takes place on a regular basis,
+                typically every day. These contests are designed to challenge participants with a series of algorithmic
+                and coding problems that test their problem-solving skills, coding proficiency, and efficiency in
+                solving complex programming challenges.
+            </p>
+        </div>
+    </div>
+
+    <div class="prizes">
+        <h1>Prize</h1>
+        <div class="prize-container">
+            <div class="prize first-place">
+                <img src="{{ url_for('static', filename='/assets/images/laptop.jpeg') }}" alt="Logo" style="border-radius: 50%;">
+                <h2 class="h2">1st Place: $1000</h2>
+            </div>
+            <div class="prize second-place">
+                <img src="{{ url_for('static', filename='/assets/images/tab.jpeg') }}" alt="Logo" style="border-radius: 50%;">
+                <h2 class="h2">2nd Place: $500</h2>
+
+
+            </div>
+            <div class="prize third-place">
+                <img src="{{ url_for('static', filename='/assets/images/tishirt.jpeg') }}" alt="Logo" style="border-radius: 50%;">
+                <h2 class="h2">3rd Place: $250</h2>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="rules-container">
+        <h1>Rules</h1>
+        <ul>
+            <li>The creator of this contest is solely responsible for setting and communicating the eligibility
+                requirements associated with prizes awarded to participants, as well as for procurement and distribution
+                of all prizes. The contest creator holds WiKiCoding harmless from and against any and all claims,
+                losses, damages, costs, awards, settlements, orders, or fines.</li>
+            <li>Code directly from our platform, which supports over 30 languages. Learn more <a href="#">here</a>.</li>
+            <li>Cheating is not allowed.</li>
+        </ul>
+    </div>
+
+
+
+
+    <div class="rules-container">
+        <h1>Scoring Rules</h1>
+        <ul>
+            <li>Each challenge has a pre-determined score.</li>
+            <li>A participant’s score depends on the number of test cases a participant’s code submission successfully
+                passes.</li>
+            <li>If a participant submits more than one solution per challenge, then the participant’s score will reflect
+                the highest score achieved. In a game challenge, the participant's score will reflect the last code
+                submission.</li>
+            <li>Participants are ranked by score. If two or more participants achieve the same score, then the tie is
+                broken by the total time taken to submit the last solution resulting in a higher score.</li>
+        </ul>
+    </div>
+
+
+    <div class="signup-container">
+        <h2>Sign up for Daily Challenge now.</h2>
+        <a href="{{ url_for('register') }}" class="cta-button">Signup</a>
+        <p>Not a genuine coding contest? <a href="#">Learn more</a>.</p>
+    </div>
+
+
+</body>
+
+</html>
